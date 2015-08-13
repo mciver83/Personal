@@ -24,13 +24,19 @@ app.directive('hover', function(){
 app.directive('scroll', function ($window) {
     return function (scope, element, attrs) {
         angular.element($window).bind("scroll", function () {
-             if (this.pageYOffset >= 420) {
-                 element.addClass('background-white');
-                 console.log('Scrolled below header.');
-             } else {
-                 element.removeClass('background-white');
-                 console.log('Header is in view.');
-             }
+            if (this.pageYOffset >= 420) {
+                element.addClass('background-white');
+                element.addClass('box-shadow-thin');
+                element.removeClass('background-trans-dark');
+                element.removeClass('box-shadow-thick');
+                element.removeClass('text-large');
+            } else {
+             	element.addClass('background-trans-dark');
+             	element.addClass('box-shadow-thick');
+             	element.addClass('text-large');
+                element.removeClass('background-white');
+                element.removeClass('box-shadow-thin');
+            }
         });
     };
 });
